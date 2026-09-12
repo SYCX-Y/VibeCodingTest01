@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: job-application-system
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 请按本机 MySQL 配置修改用户名 / 密码
+    url: jdbc:mysql://localhost:3306/job_application?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    # 默认使用本机 MySQL 密码 123456；如需换密码，直接改这里，或设置环境变量 SQL_PWD 覆盖
+    password: ${SQL_PWD}
+  jackson:
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    # 开发期打印 SQL，正式环境可移除
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    com.example.jobapplication: debug
